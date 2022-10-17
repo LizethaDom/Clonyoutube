@@ -1,0 +1,268 @@
+/*Aplica para dodo el contenido ajustes generales*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*Aplican los estilos para todo el Body*/
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*Aplican estos estilos para todas las etiquetas <a>*/
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+/*Aplican los estilos para todo el div con la clase contenedor*/
+.contenedor{
+    width: 100%; /*width que porcentaje de la página va abarcar*/
+    min-height: 100vh; /* Alto minimo, con el min-heigth le estoy poniendo que el contenedor valla desde la parte superior hasta habajo de la pantalla del usuario*/
+    margin: 0 auto; /* para centrar el contenedor en caso de que cambie el ancho del width*/
+    display: grid; /*Le estoy indicando que vamos a trabajar con el display de tipo grid podria poner el flex depende con que trabaje*/
+    grid-template-columns: minmax(90px, 90px) auto; /* al poner columns le tengo que indicar cuantas columnas tendra la página sin contemplar el header en caso de que lo tenga*/
+    grid-template-rows: 60px auto;  /* con el rows defino las filas */
+    grid-template-areas:"header header"
+                        "menu contenido" ; /* con el grid-template area voy a registrar la plantilla con la que quiero trabajar le pongo nombres a las areas y como las quiero y despues en los estilos de esa area tengo que ponerle el nombre como lo registre aqui solo con el grid area y el nombre */
+    transition: all .3s ease; /* transición en todo el contenedor  */
+
+
+}
+
+.contenedor.active{  /* al div de contenedor primero solo lo tenia con la clase contenedor agregue la de active para poner la transicion */
+    grid-template-columns: minmax(300px, 18%) auto; /* con la clase active le estoy poniendo el tamaño de 300px */
+
+}
+
+/* ---- ---- ---- HEADER ---- ---- ---- */
+
+.header{
+    grid-area: header; /* Para el registro del area nombre depende del nombre que registre en el contenedor en grid-template-areas*/
+    padding: 0 20px; /* padding 0 arriba y abajo y 20px izquierda y derecha */
+    display: grid; /* Display grid para trabajar la parte del header de la misma manera que el contenedor */
+    grid-template-columns: auto 1fr auto; /* Definir cuantas columnas quiero en mi header */ 
+    align-items: center;  /* para que aline todo al centro */
+    justify-content: space-between ; /* El espacio restante lo divida entre cada uno */
+    grid-gap: 20px; /* Espaciado entre los divs de el header */
+    grid-template-areas: " logo busqueda iconos"; /* definir donde va cada elemento del header, cuando pongo esta opcion tengo que definir las areas dentro de los grupos*/
+
+    }
+
+ .header .contenedormenu { /* me fui a la clase del menu el primer div dentro del header */
+    grid-area: logo; /* pongo grid area para poner el nombre de logo para el grid templare area del header */
+
+ }  
+ .header .contenedormenu .botonmenu {
+    border: none; /* Quito borde */
+    padding: 10px; /* espacio en los bordes */
+    background: none; /* le etoy quitando el fondo */
+    cursor: pointer;
+    font-size: 18px; /* tamaño de la imgen */
+    border-radius: 100px; /* No cuadrado, redondeado*/
+    width: 50px; /* Alto */
+    height: 50px; /* Ancho */
+ }
+ 
+ .header .contenedormenu .botonmenu button:hover { /* Copie la clase del boton para poner el hover y es para darle cuando pasen el cursor cambie de color */
+    background: #7e4343;
+ }
+
+ .header .contenedormenu .logo .fa {
+    background: #ff0000;
+    padding: 7px 12px;
+    border-radius: 4px; /* No cuadrado como ovalado */
+    font-size: 8px; /* Tamaño del logo */
+    color: white;
+    position: relative; /* Meti la posición relativa para que no se mueva jejeje ver si es asi */
+    top: -4px; /* Quedaba por debajo de la barra meti el top para ajustarlo */
+    margin-right: 10px; /* Espacio entre el logo y el span donde puse premium */
+
+ }
+
+ .header .contenedormenu .logo {
+    font-family: 'Gemunu+Libre', sans-serif; /* No me jala la letra que descargue */
+    position: relative;    
+ }
+
+ .header .barrabusqueda {
+    grid-area: busqueda;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+ }
+
+ .header .barrabusqueda input {
+    min-width: 60%;
+    padding: 0 15px;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid;
+    font-size: 16px;
+    font-family: sans-serif;
+
+ }
+ 
+ .header .barrabusqueda button {
+    height: 35px;
+    border: 1px solid;
+    border-left: none;
+    color: #545454;
+    background: f8f8f8;
+    padding: 0 20px;
+    cursor: pointer;
+
+ }
+
+ .header .botonesheader {
+    grid-area: iconos;
+    display: flex;
+    align-items: center;
+ }
+
+ .header .botonesheader button {
+    background: none;
+    border: none;
+    width: 40px; /* Ancho */
+    height: 40px; /* Alto */
+    font-size: 18px;
+    padding: 7px 12px;
+    border-radius: 100px;
+    color: #828282;
+    margin-right: 20px;
+    cursor: pointer;
+ }
+
+ .header .botonesheader button:hover {
+    background: #e7e7e7;
+ }
+
+ .header .botonesheader .avatar { /* Ayuda no cambia el tamaño ¿Es por la Imagen?*/
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+
+ }
+
+ .header .botonesheader .avatar{
+    vertical-align: top;
+    width: 100%;
+    border-radius: 100px;
+ }
+
+ /* ---- ---- ---- Menu principal ---- ---- ---- */
+
+
+.menulateral{
+    grid-area: menu;  /* Para el registro del area nombre depende del nombre que registre en el contenedor en grid-template-areas*/
+    
+    background: #fff;
+}
+
+.menulateral a {
+    display: block; /* Display de tipo bloque */
+    padding: 15px 30px;
+    color: #000;
+
+}
+
+.menulateral a:hover {
+    background: #e5e5e5;
+    
+
+}
+
+.menulateral a.active {
+    background: #e5e5e5;
+    font-weight: bold;
+}
+
+.menulateral .fas {
+    color: 606060;
+    margin-right: 32px;
+    width: 20px;
+    text-align: center;
+}
+
+.menulateral a.active {
+    color: #ff0000;
+}
+
+.menulateral hr {
+    margin: 20px 0;
+    border: 1px solid #dfdfdf;
+}
+
+/* ---- ---- ---- Contenido de los videos main ---- ---- ---- */
+
+
+.main{
+    grid-area: contenido;  /* Para el registro del area nombre depende del nombre que registre en el contenedor en grid-template-areas*/
+    background: #f9f9f9;
+    padding: 40px;
+}
+
+
+.main img {
+    width: 305px;
+    height: 182px;
+}
+
+.main .titulodelosvideos {
+    margin-bottom: 20px;
+}
+
+.main .gridvideos {
+    display: grid;
+    grid-gap: 40px 20px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.main .gridvideos.video {
+    width: 100%;
+
+}
+.main .gridvideos.video img {
+    width: 100%;
+} 
+
+ /* ---- ---- ---- Mediaquieries ---- ---- ---- */
+
+ @media screen and (max-width: 1200px) {
+    .main .gridvideos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .header .contenedormenu .logo {
+        display: none;
+    }
+
+    .header .barrabusqueda input {
+        min-width: 70%;
+    }
+ }
+
+ @media screen and (max-width: 992px) {
+    .main .gridvideos {
+        grid-template-columns: repeat(2, 1fr);
+        }
+ }
+
+ @media screen and (max-width: 768px) {
+
+    .contenedor {
+        grid-template-rows: auto;
+         }
+
+    .header {
+        padding: 20px;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        grid-template-areas: "logo iconos"
+                            "busqueda busqueda";
+    }
+
+
+ }
